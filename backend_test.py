@@ -72,7 +72,7 @@ class VaalticCRMTester:
         
         # Test admin registration
         admin_data = {
-            "email": "admin@vaaltic.com",
+            "email": f"admin.test.{datetime.now().strftime('%H%M%S')}@vaaltic.com",
             "password": "password",
             "full_name": "Admin User",
             "role": "admin"
@@ -88,11 +88,12 @@ class VaalticCRMTester:
         
         if success:
             self.admin_user = response
+            self.admin_email = admin_data["email"]
             print(f"   Admin user created: {response.get('email')}")
         
         # Test customer registration
         customer_data = {
-            "email": "user@vaaltic.com", 
+            "email": f"user.test.{datetime.now().strftime('%H%M%S')}@vaaltic.com", 
             "password": "password",
             "full_name": "Customer User",
             "role": "customer"
@@ -108,6 +109,7 @@ class VaalticCRMTester:
         
         if success:
             self.customer_user = response
+            self.customer_email = customer_data["email"]
             print(f"   Customer user created: {response.get('email')}")
 
     def test_user_login(self):
