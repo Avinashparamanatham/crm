@@ -58,8 +58,11 @@ function App() {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+      <div className="min-h-screen dark-theme-bg flex justify-center items-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-white text-lg">Loading VAALTIC CRM...</p>
+        </div>
       </div>
     );
   }
@@ -67,11 +70,11 @@ function App() {
   return (
     <AuthContext.Provider value={{ user, login, logout, API }}>
       <Router>
-        <div className="App min-h-screen bg-gray-50">
+        <div className="App">
           {user ? (
-            <>
+            <div className="dark-theme-bg dark-theme-pattern min-h-screen">
               <Navbar />
-              <main className="container mx-auto px-4 py-8">
+              <main className="container mx-auto px-6 py-8">
                 <Routes>
                   <Route path="/" element={<Dashboard />} />
                   <Route path="/dashboard" element={<Dashboard />} />
@@ -81,7 +84,7 @@ function App() {
                   <Route path="*" element={<Navigate to="/dashboard" replace />} />
                 </Routes>
               </main>
-            </>
+            </div>
           ) : (
             <Routes>
               <Route path="/" element={<Login />} />
