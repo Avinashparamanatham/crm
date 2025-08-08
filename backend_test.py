@@ -120,7 +120,7 @@ class VaalticCRMTester:
         
         # Test admin login
         admin_login = {
-            "email": "admin@vaaltic.com",
+            "email": getattr(self, 'admin_email', 'admin@vaaltic.com'),
             "password": "password"
         }
         
@@ -138,7 +138,7 @@ class VaalticCRMTester:
         
         # Test customer login
         customer_login = {
-            "email": "user@vaaltic.com",
+            "email": getattr(self, 'customer_email', 'user@vaaltic.com'),
             "password": "password"
         }
         
